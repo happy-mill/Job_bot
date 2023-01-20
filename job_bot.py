@@ -6,17 +6,13 @@ from aiogram.dispatcher import Dispatcher, FSMContext
 from aiogram.utils import executor
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import State, StatesGroup
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-storage = MemoryStorage()
 start_date = date(2023, 1, 2)
 users1 = ['Игорь', 'Евгений']
 users2 = ['Илья', 'YALW']
-signal = int
-user = ''
 
 bot = Bot(token='5963586192:AAEgtVge2OOon91Kf60siKD7o03PT8LF7PE')
-dp = Dispatcher(bot=bot, storage=storage)
+dp = Dispatcher(bot=bot)
 
 
 def get_keyboard() -> ReplyKeyboardMarkup:
@@ -48,21 +44,21 @@ async def smena(message: types.Message):
 
 @dp.message_handler(state=ClientState.smena)
 async def calculate_date(message: types.Message, state: FSMContext):
-    user = message.from_user.first_name
+    user_name = message.from_user.first_name
     try:
-        if user in users1 or users2:
+        if user_name in users1 or users2:
             str_date = message.text
             current_date = datetime.datetime.strptime(str_date, '%d.%m.%y').date()
             count_days = current_date - start_date
             diff = count_days.days
-            signal = diff % 28
-            if user in users1:
-                if signal <= 14:
+            sign = diff % 28
+            if user_name in users1:
+                if sign <= 14:
                     await message.reply('Ты в первой смене, лох!')
                 else:
                     await message.reply('Ты во вторую! Возрадуйся!')
-            if user in users2:
-                if signal <= 14:
+            if user_name in users2:
+                if sign <= 14:
                     await message.reply('Ты во вторую! Возрадуйся!')
                 else:
                     await message.reply('Ты в первую, лох!')
