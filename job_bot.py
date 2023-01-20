@@ -70,8 +70,9 @@ async def calculate_date(message: types.Message, state: FSMContext):
 @dp.message_handler()
 async def all_message(message: types.Message):
     user_name = message.from_user.first_name
-    user_id = message.from_user.id
-    await message.reply(f'{user_name} лох! Твой id={user_id}')
+    await message.reply(f'{user_name} лох!')
+    print(message.from_user.first_name, message.from_user.id)
+
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
