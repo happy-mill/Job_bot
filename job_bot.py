@@ -14,7 +14,7 @@ users1 = ['Игорь', 'Евгений']
 users2 = ['Илья', 'YALW']
 
 bot = Bot(token='5963586192:AAEgtVge2OOon91Kf60siKD7o03PT8LF7PE')
-dp = Dispatcher(bot=bot)
+dp = Dispatcher(bot=bot, storage=storage)
 
 
 def get_keyboard() -> ReplyKeyboardMarkup:
