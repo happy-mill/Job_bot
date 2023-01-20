@@ -71,7 +71,7 @@ async def calculate_date(message: types.Message, state: FSMContext):
 async def all_message(message: types.Message):
     user_name = message.from_user.first_name
     await message.reply(f'{user_name} лох!')
-    print(message.from_user.first_name, message.from_user.id)
+    print(message.from_user.first_name, message.from_user.id, message.text)
 
 
 if __name__ == '__main__':
