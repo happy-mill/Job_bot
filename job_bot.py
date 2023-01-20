@@ -6,7 +6,9 @@ from aiogram.dispatcher import Dispatcher, FSMContext
 from aiogram.utils import executor
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import State, StatesGroup
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
+storage = MemoryStorage()
 start_date = date(2023, 1, 2)
 users1 = ['Игорь', 'Евгений']
 users2 = ['Илья', 'YALW']
