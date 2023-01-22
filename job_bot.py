@@ -1,4 +1,5 @@
 import datetime
+from apikey import API_TOKEN
 from datetime import date
 from aiogram import Bot, types
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
@@ -13,7 +14,7 @@ start_date = date(2023, 1, 2)
 users1 = ['Игорь', 'Евгений']
 users2 = ['Илья', 'YALW']
 
-bot = Bot(token='5963586192:AAEgtVge2OOon91Kf60siKD7o03PT8LF7PE')
+bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot=bot, storage=storage)
 
 
